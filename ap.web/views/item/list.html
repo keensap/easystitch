@@ -1,0 +1,83 @@
+<section ng-controller="itemController" class="row">
+    <!-- Page Heading -->
+
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                {{page.title}}<img src="img/38.gif" ng-show="loading">
+                <small>List</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i>  <a href="/">Home</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-file"></i> Item
+                </li>
+            </ol>
+            <p class="{{message.messageClass}}">
+                {{message.text}}<br />
+                <span ng-repeat="error in message.errors">{{error.name}}: {{error.message}} </span>
+            </p>
+            <div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" ng-click="isCollapsedDiv = !isCollapsedDiv" ng-init="isCollapsedDiv=false;">
+                        <h4 class="panel-title">
+                            List of Items
+                        </h4>
+                    </div>
+                    <div collapse="isCollapsedDiv">
+                        <div class="panel-body">
+                            <div>
+                                <input name="txtSearch" ng-model="search" ng-keyup="$event.keyCode == 13 && filter()" class="form-control" placeholder="Enter to Search...." />
+                                <!--<button ng-click="filter()">Search</button>-->
+                            </div>
+
+                            <hr />
+                            <a href="/item/new" class="btn btn-default">New</a>
+                            <div class="table-responsive">
+                                <table style="width:98%;" class="table table-hover table-striped">
+                                    <caption>
+                                    </caption>
+                                    <thead>
+                                        <tr>
+                                            <!--style="min-width:100px;"-->
+                                            <th ng-click="changeSorting($event,'code')">
+                                                Code
+                                                <span class="glyphicon" ng-class="getIcon($event,'code')"></span>
+                                            </th>
+                                            <!--style="min-width:200px;"-->
+                                            <th ng-click="changeSorting($event,'name')">
+                                                Name
+                                                <span class="glyphicon" ng-class="getIcon($event,'name')"></span>
+                                            </th>
+                                            <!--style="min-width:100px;"-->
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody collapse="isCollapsed">
+                                        <tr ng-repeat="item in items | limitTo:pageSize">
+                                            <td>{{ item.code }}</td>
+                                            <td>{{ item.name }}</td>
+                                            <td><a href="/item/{{ item._id }}">Edit</a></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="3">
+                                                Total: {{totalCount}}
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <uib-pagination total-items="totalCount" items-per-page="pageSize" ng-model="pageNumber" ng-change="pageChanged()"></uib-pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- /.row -->
+    
+    
+</section>

@@ -1,0 +1,21 @@
+<section ng-controller="aboutController" class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            {{page.title}}<img src="img/38.gif" ng-show="loading">
+            <small>This is the 'about us' page</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <i class="fa fa-dashboard"></i>  <a href="/">Home</a>
+            </li>
+            <li class="active">
+                <i class="fa fa-file"></i> About
+            </li>
+        </ol>
+        <p class="{{message.messageClass}}">
+            {{message.text}}<br />
+            <span ng-repeat="error in message.errors">{{error.name}}: {{error.message}} </span>
+        </p>
+
+    </div>
+</section>

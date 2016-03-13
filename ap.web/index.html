@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description"
+          content="AngularJS web portal">
+    <base href="/">
+
+    <!-- Title and icon -->
+    <title>Angular Portal</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- CSS -->
+    
+    <!--<link rel="stylesheet" href="css/bootstrap-responsive.min.css">-->
+    
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/angular-chart.css" />
+    <link rel="stylesheet" href="css/anime.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <!--<link rel="stylesheet" href="css/app.less" />-->
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="scripts/require-2.1.22/require.js" data-main="config/config.js"></script>
+</head>
+<body > d
+    <!-- #wrapper -->
+    <div id="wrapper">
+        <!-- header -->
+        <!--<div ui-view="nav"></div>  ng-show="global.isLoggedIn"-->
+        <!--<header ng-include="'views/partial/navigtion.html'" class="enter" ng-show="global.isLoggedIn"></header>-->
+        <!-- /header -->
+        <!-- #page-wrapper -->
+        <div id="page-wrapper">
+             <!--.container-fluid--> 
+            <div class="container-fluid fade" ui-view>
+                <div ui-view="layout"></div>
+                
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- Scripts -->
+    
+    <!-- /Scripts -->
+</body>
+</html>

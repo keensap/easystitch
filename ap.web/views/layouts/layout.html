@@ -1,0 +1,21 @@
+﻿<!--STRUCTURE-->
+<!-- HEADER -->
+<header>
+    <div ui-view="header"></div>
+</header>
+<!-- /HEADER -->
+<!-- BODY -->
+<div class="container">
+    <div ui-view></div>
+    <div ui-view="container">
+        <div class="center-modal-loader">
+            <img src="img/38.gif" />
+        </div>
+    </div>
+</div>
+<!-- /BODY -->
+<!-- FOOTER -->
+<footer>
+    <div ui-view="footer"></div>
+</footer>
+<!-- /FOOTER -->

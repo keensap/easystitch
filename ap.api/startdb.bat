@@ -1,0 +1,3 @@
+@echo Stating Database server on port 27017....
+@echo off
+"C:\Program Files\MongoDB\Server\3.0\bin\mongod.exe" --dbpath "data"

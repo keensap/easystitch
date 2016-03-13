@@ -1,0 +1,2 @@
+D:\Dev\ap\src\ap.api\obj\Debug\api.njsprojResolveAssemblyReference.cache
+D:\Dev\ap\src\ap.api\bin\Microsoft.NodejsTools.WebRole.dll

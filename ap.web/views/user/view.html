@@ -1,0 +1,80 @@
+<section ng-controller="userController">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            {{page.title}}<img src="img/38.gif" ng-show="loading">
+            <small>View</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <i class="fa fa-dashboard"></i>  <a href="/">Home</a>
+            </li>
+            <li>
+                <i class="fa fa-file"></i>  <a href="/user">User</a>
+            </li>
+            <li class="active">
+                <i class="fa fa-file"></i> User View
+            </li>
+        </ol>
+        <p class="{{message.messageClass}}">
+            {{message.text}}<br />
+            <span ng-repeat="error in message.errors">{{error.name}}: {{error.message}} </span>
+        </p>
+        <form name="form" novalidate class="form-horizontal" role="form" ng-submit="update()">
+            <div class="form-group">
+                <label for="txtEmail">Email:</label>
+                <input id="txtEmail" name="txtEmail" type="email" class="form-control" ng-model="user.email" required />
+                <span role="alert" class="validation-error" ng-show="form.$submitted || form.txtEmail.$touched">
+                    <span ng-show="form.txtEmail.$error.required">Required!</span>
+                    <span ng-show="form.txtEmail.$error.email">Enter valid email</span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="txtFirstName">First Name:</label>
+                <input id="txtFirstName" name="txtFirstName" type="text" class="form-control" ng-model="user.first_name" />
+                <span role="alert" class="validation-error" ng-show="form.$submitted || form.txtFirstName.$touched">
+                    <span ng-show="form.txtFirstName.$error.required">Required!</span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="txtLastName">Last Name:</label>
+                <input id="txtLastName" name="txtLastName" type="text" class="form-control" ng-model="user.last_name" />
+                <span role="alert" class="validation-error" ng-show="form.$submitted || form.txtLastName.$touched">
+                    <span ng-show="form.txtLastName.$error.required">Required!</span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="txtPassword">Password:</label>
+                <input id="txtPassword" name="txtPassword" type="password" class="form-control" ng-model="user.password" required ng-minlength="6" />
+                <span role="alert" class="validation-error" ng-show="form.$submitted || form.txtPassword.$touched">
+                    <span ng-show="form.txtPassword.$error.required">Required!</span>
+                    <span ng-show="form.txtPassword.$error.minlength">At least 6 charactors</span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="txtPasswordRetyped">Confirm Password:</label>
+                <input id="txtPasswordRetyped" name="txtPasswordRetyped" type="password" ng-model="user.confirm_password" compare-to="user.password" class="form-control" />
+                <span role="alert" class="validation-error" ng-show="form.$submitted || form.txtPasswordRetyped.$touched">
+                    <span ng-show="form.txtPasswordRetyped.$error.noMatch">Password not matched</span>
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="txtIsActive">Is Active:</label>
+                <input id="txtIsActive" name="txtIsActive" type="checkbox" ng-model="user.is_active" />
+            </div>
+            <div>
+                <!--<button type="button" class="btn btn-default" ng-click="back()">Back</button>-->
+                <button type="button" class="btn btn-default" ng-click="delete()">Delete</button>
+                <button type="submit" class="btn btn-primary btn-default"
+                        ng-disabled="
+                        form.txtEmail.$dirty && form.txtEmail.$invalid ||
+                        form.txtFirstName.$dirty && form.txtFirstName.$invalid ||
+                        form.txtLastName.$dirty && form.txtLastName.$invalid ||
+                        form.txtPassword.$dirty && form.txtPassword.$invalid ||
+                        form.txtPasswordRetyped.$dirty && form.txtPasswordRetyped.$invalid
+                        ">
+                    Save
+                </button>
+            </div>
+        </form>
+    </div>
+</section>

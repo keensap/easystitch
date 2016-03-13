@@ -1,0 +1,3 @@
+@echo Stating web server....
+@echo off
+/usr/bin/nodejs server.js

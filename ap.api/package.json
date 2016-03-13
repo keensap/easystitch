@@ -1,0 +1,29 @@
+{
+  "name": "EasyStitch",
+  "version": "0.1.0",
+  "description": "Easy Stitch Api",
+  "author": {
+    "name": "mzain",
+    "email": ""
+  },
+  "env": {
+    "PYTHON": "/usr/lib/python2.7"
+  },
+  "engines": {
+    "node": ">= 0.10.0",
+    "npm": ">= 1.1.0"
+  },
+  "dependencies": {
+    "bcrypt": "^0.8.5",
+    "body-parser": "~1.15.0",
+    "bunyan": "^1.6.0",
+    "express": "~4.13.4",
+    "express-jwt": "^3.3.0",
+    "mongoose": "^4.4.4"
+  },
+  "main": "server.js",
+  "scripts": {
+    "preinstall": "npm i -g node-gyp && node-gyp clean",
+    "start": "node server.js"
+  }
+}

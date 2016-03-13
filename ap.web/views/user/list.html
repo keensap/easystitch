@@ -1,0 +1,81 @@
+<section ng-controller="userController">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            {{page.title}}<img src="img/38.gif" ng-show="loading">
+            <small>List</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <i class="fa fa-dashboard"></i>  <a href="/">Home</a>
+            </li>
+            <li class="active">
+                <i class="fa fa-file"></i> User
+            </li>
+        </ol>
+        <p class="{{message.messageClass}}">
+            {{message.text}}<br />
+            <span ng-repeat="error in message.errors">{{error.name}}: {{error.message}} </span>
+        </p>
+        <div>
+            <div class="panel panel-default">
+                <div class="panel-heading" ng-click="isCollapsedDiv = !isCollapsedDiv" ng-init="isCollapsedDiv=false;">
+                    <h4 class="panel-title">
+                        List of USers
+                    </h4>
+                </div>
+                <div collapse="isCollapsedDiv">
+                    <div class="panel-body">
+                        <div>
+                            Search: <input name="txtSearch" ng-model="search" ng-keyup="$event.keyCode == 13 && filter()" /><button ng-click="filter()">Search</button>
+                        </div>
+
+                        <hr />
+                        <a href="/user/new" class="btn btn-default">New</a>
+                        <div class="table-responsive">
+                            <table style="width:98%;" class="table table-hover table-striped">
+
+                                <caption>
+                                </caption>
+                                <thead>
+                                    <tr>
+                                        <th ng-click="changeSorting($event,'email')">
+                                            Email
+                                            <span class="glyphicon" ng-class="getIcon($event,'email')"></span>
+                                        </th>
+                                        <th ng-click="changeSorting($event,'first_name')">
+                                            First Name
+                                            <span class="glyphicon" ng-class="getIcon($event,'first_name')"></span>
+                                        </th>
+                                        <th ng-click="changeSorting($event,'last_name')">
+                                            Last Name
+                                            <span class="glyphicon" ng-class="getIcon($event,'last_name')"></span>
+                                        </th>
+                                        <th>
+                                            Active
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody collapse="isCollapsed">
+                                    <tr ng-repeat="user in users | limitTo:pageSize">
+                                        <td><a href="/user/{{ user._id }}">{{ user.email }}</a></td>
+                                        <td>{{ user.first_name }}</td>
+                                        <td>{{ user.last_name }}</td>
+                                        <td>{{ user.is_active }}</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="3">
+                                            Total: {{totalCount}}
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            <pagination total-items="totalCount" items-per-page="pageSize" ng-model="pageNumber" ng-change="pageChanged()"></pagination>
+                            <div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</section>
